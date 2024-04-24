@@ -1,0 +1,40 @@
+<div>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <h3>SignUp Form</h3>
+        <div>
+            <label>Name</label>
+            <input type="text" formControlName="userName" placeholder="abc" required>
+            <p *ngIf="isValid && signupForm.get('userName')?.status == 'INVALID'" style="color: red;">Name Is Required</p>
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="email" formControlName="email" placeholder="abc@gmail.com" required>
+            <p *ngIf="isValid && signupForm.get('email')?.status == 'INVALID'" style="color: red;">Email Is Required</p>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" formControlName="password" placeholder="123.." required>
+            <p *ngIf="isValid && signupForm.get('password')?.status == 'INVALID'" style="color: red;">Password Is
+                Required</p>
+        </div>
+        <div>
+            <label>confirm Password</label>
+            <input type="password" formControlName="confirmPassword" placeholder="123.." required>
+            <p *ngIf="isValid && signupForm.get('confirmPassword')?.status == 'INVALID'" style="color: red;">Confirm Password Is
+                Required</p>
+        </div>
+        <div>
+            <label>Roles</label>
+            <select formControlName="userRole">
+              <option value="" disabled>Select a role</option>
+              <option value="Admin">Admin</option>
+              <option value="User">User</option>
+            </select>
+            <p *ngIf="isValid && signupForm.get('userRole')?.status == 'INVALID'" style="color: red;">UserRole Is Required</p>
+          </div>
+        <button type="submit">Sign Up</button>
+    </form>
+    <div class="login-link" style="display: flex;justify-content: center;" >
+        <p>Already have an account? <a (click)="toggleLoginForm()">Login here.</a></p>
+      </div>
+</div>
